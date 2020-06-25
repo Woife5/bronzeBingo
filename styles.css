@@ -1,0 +1,82 @@
+
+#bronzebingo{
+  margin: 0 auto;
+  text-align: center;
+  border-collapse: collapse;
+  height: 70vh;
+  width: 70vh;
+}
+
+th, td{
+  margin: 0 auto;
+  text-align: center;
+  border: 3px solid black;
+  width: 25%;
+  background: #808080;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 3vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.done{
+  background: #16B3C4;
+  cursor: auto;
+}
+
+.winningrow{
+  background: #0FB535 !important;
+}
+
+h1{
+  text-align: center;
+  font-size: 6vh;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#restarttext{
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2vh;
+  margin-bottom: 10px;
+  cursor:pointer;
+  text-decoration: underline;
+  color: blue;
+}
+
+.suggestions{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.bingo{
+  font-weight: bold;
+  color: #0FB535;
+}
+
+#bingo{
+  transition: 0.3s;
+}
+
+@media screen and (orientation:portrait) {
+  body{
+    margin: 0px;
+  }
+  #bronzebingo{
+    height: 100vw;
+    width: 100vw;
+  }
+  th, td{
+    font-size: 4vw;
+    transition: 0.15s;
+  }
+  h1{
+    font-size: 8vw;
+  }
+
+  p{
+    font-size: 3vw;
+  }
+}
