@@ -15,7 +15,7 @@ th, td{
   background: #808080;
   cursor: pointer;
   transition: 0.5s;
-  font-size: 3vh;
+  font-size: 2.5vh;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -58,6 +58,10 @@ h1{
 
 #bingo{
   transition: 0.3s;
+}
+
+.versionselect{
+  margin-right: 15px;
 }
 
 @media screen and (orientation:portrait) {

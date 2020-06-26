@@ -1,34 +1,37 @@
-var grid = [
+let grid = [
   [false, false, false, false],
   [false, false, false, false],
   [false, false, false, false],
   [false, false, false, false]
 ];
-var phrases = [
-  'kys',
-  'Bronze',
-  'idiot',
-  'just a game',
-  'u mad?',
-  'blind',
-  'kid',
-  'retard',
-  'easy',
-  'uninstall',
-  'Report',
-  'your mom',
-  'afk',
-  'Noob',
-  'cry',
-  'suck',
-  '****',
-  'troll'
-];
-var won = false;
+
+let phrases;
+let won = false;
+
+let version = document.getElementById('version');
+
+version.addEventListener('change', resetGame);
 
 resetGame();
 
+/**
+ * Resets the entire game board
+ */
 function resetGame(){
+  switch (version.options[version.selectedIndex].value) {
+    case 'phrases_bronze':
+      phrases = phrases_bronze;
+      break;
+
+    case 'phrases_mariokart':
+      phrases = phrases_mariokart;
+      break;
+  
+    default:
+      phrases = phrases_bronze;
+      break;
+  }
+  
   won = false;
   shuffle(phrases);
   document.getElementById('restarttext').style.display="none";
@@ -51,6 +54,10 @@ function resetGame(){
   ];
 }
 
+/**
+ * This method taked an array and shuffles it.
+ * @param {Array} a The array to be shuffled
+ */
 function shuffle(a) {
     let j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -59,22 +66,27 @@ function shuffle(a) {
         a[i] = a[j];
         a[j] = x;
     }
-    return a;
 }
 
+/**
+ * This method marks a square on the playing field as checked.
+ */
 function onClick(row, col){
   grid[row][col] = true;
   let elem = document.getElementById(row+''+col);
   elem.classList.add('done');
   elem.onClick = null;
 
-  if (! won) {
-    if(checkWin()){
+  if ( !won ) {
+    if( checkWin() ){
       onWin();
     }
   }
 }
 
+/**
+ * This method checks if the game is won
+ */
 function checkWin(){
   for (let row = 0; row < 4; row++) {
     if(grid[row][0] == true && grid[row][1] == true && grid[row][2] == true && grid[row][3] == true){
@@ -90,12 +102,19 @@ function checkWin(){
   }
 }
 
+/**
+ * This method activates the reset option and colors Bingo green
+ */
 function onWin(){
   won = true
   document.getElementById('restarttext').style.display="block";
   document.getElementById('bingo').classList.add('bingo');
 }
 
+/**
+ * This method takes the row or col that won the game and marks it green
+ * If the win condition was met in a row, col must be -1 and otherwise
+ */
 function colorWinningRow(row, col){
   if(col == -1){
     for (let i = 0; i < 4; i++) {
