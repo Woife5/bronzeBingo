@@ -1,29 +1,17 @@
 let grid;
 let phrases;
 let won = false;
-let version = document.getElementById('version');
+let mode = document.getElementById('mode');
 
-version.addEventListener('change', resetGame);
+mode.addEventListener('change', resetGame);
 resetGame();
 
 /**
  * Resets the entire game board
  */
 function resetGame(){
-  // Check the currently set game version and set its phrases
-  switch (version.options[version.selectedIndex].value) {
-    case 'phrases_bronze':
-      phrases = phrases_bronze;
-      break;
-
-    case 'phrases_mariokart':
-      phrases = phrases_mariokart;
-      break;
-
-    default:
-      phrases = phrases_bronze;
-      break;
-  }
+  // Check the currently selected gamemode and set its phrases
+  phrases = gameModes[mode.options[mode.selectedIndex].value];
   
   // Reset the won variable and reshuffle the phrases array
   won = false;
