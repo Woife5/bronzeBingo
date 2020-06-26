@@ -126,3 +126,9 @@ function colorWinningRow(row, col){
     }
   }
 }
+
+let game = {
+  "version" : "1.0.0",
+  "author" : "Wolfgang Schwendtbauer",
+  "gameVerions" : 2
+}
