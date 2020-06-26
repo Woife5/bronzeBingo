@@ -1,3 +1,6 @@
+// Every BronzeBingo variant needs at least 16 different phrases! (4x4)
+
+// Original Bronze Bingo for LoL
 let phrases_bronze = [
     "kys",
     "Bronze",
@@ -19,6 +22,7 @@ let phrases_bronze = [
     "troll"
 ];
 
+// Bingo for Mariokart
 let phrases_mariokart = [
     "Use a mushroom",
     "Miss an itembox",

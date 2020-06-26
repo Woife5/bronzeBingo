@@ -1,23 +1,16 @@
-let grid = [
-  [false, false, false, false],
-  [false, false, false, false],
-  [false, false, false, false],
-  [false, false, false, false]
-];
-
+let grid;
 let phrases;
 let won = false;
-
 let version = document.getElementById('version');
 
 version.addEventListener('change', resetGame);
-
 resetGame();
 
 /**
  * Resets the entire game board
  */
 function resetGame(){
+  // Check the currently set game version and set its phrases
   switch (version.options[version.selectedIndex].value) {
     case 'phrases_bronze':
       phrases = phrases_bronze;
@@ -26,16 +19,21 @@ function resetGame(){
     case 'phrases_mariokart':
       phrases = phrases_mariokart;
       break;
-  
+
     default:
       phrases = phrases_bronze;
       break;
   }
   
+  // Reset the won variable and reshuffle the phrases array
   won = false;
   shuffle(phrases);
+
+  // Remove the restart text and green color from Bingo
   document.getElementById('restarttext').style.display="none";
   document.getElementById('bingo').classList.remove('bingo');
+
+  // Remove the active and winning paint from each tile
   let elem;
   for(let row = 0; row < 4; row++){
     for(let col = 0; col < 4; col++){
@@ -46,6 +44,8 @@ function resetGame(){
       elem.onClick = function() {onClick(row,col)};
     }
   }
+
+  // Reset the grid
   grid = [
     [false, false, false, false],
     [false, false, false, false],
