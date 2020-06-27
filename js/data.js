@@ -1,7 +1,7 @@
 // Every BronzeBingo variant needs at least 16 different phrases! (4x4)
 
 let bronzeBingo = {
-    "version" : "1.2.2",
+    "version" : "1.2.3",
     "author" : "Wolfgang Schwendtbauer",
     "gameModeCount" : 2,
     "gameModes" : {
