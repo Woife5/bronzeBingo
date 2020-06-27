@@ -1,17 +1,23 @@
-let grid;
-let phrases;
+let grid = [[false]];
+let phrases = [""];
 let won = false;
-let mode = document.getElementById('mode');
+const modeselect = document.getElementById('modeselect');
 
-mode.addEventListener('change', resetGame);
+modeselect.addEventListener('change', resetGame);
 resetGame();
 
 /**
  * Resets the entire game board
  */
 function resetGame(){
+  // Reset the mode selector if new data has been added. This way new temporary game data
+  // can be added by the user and the program can work with it.
+  if (modeselect.childElementCount !== bronzeBingo.gameModeCount) {
+    resetModeSelector();
+  }
+
   // Check the currently selected gamemode and set its phrases
-  phrases = gameModes[mode.options[mode.selectedIndex].value];
+  phrases = bronzeBingo.gameModes[modeselect.options[modeselect.selectedIndex].value].data;
   
   // Reset the won variable and reshuffle the phrases array
   won = false;
@@ -40,6 +46,19 @@ function resetGame(){
     [false, false, false, false],
     [false, false, false, false]
   ];
+}
+
+function resetModeSelector(){
+  // Reset the mode selector
+  let modes = Object.keys(bronzeBingo.gameModes);
+  modeselect.innerHTML = '';
+  
+  for (let i = 0; i < modes.length; i++) {
+    const option = document.createElement('option');
+    option.value = modes[i];
+    option.textContent = bronzeBingo.gameModes[modes[i]].name;
+    modeselect.appendChild(option);
+  }
 }
 
 /**
@@ -113,10 +132,4 @@ function colorWinningRow(row, col){
       document.getElementById(i+''+col).classList.add('winningrow');
     }
   }
-}
-
-let game = {
-  "version" : "1.1.0",
-  "author" : "Wolfgang Schwendtbauer",
-  "gameModes" : 2
 }
