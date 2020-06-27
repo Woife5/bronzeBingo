@@ -48,6 +48,9 @@ function resetGame(){
   ];
 }
 
+/**
+ * Get all game modes from bronzeBingo object again and write them to the mode selector
+ */
 function resetModeSelector(){
   // Reset the mode selector
   let modes = Object.keys(bronzeBingo.gameModes);
@@ -93,16 +96,18 @@ function onClick(row, col){
 
 /**
  * This method checks if the game is won
+ * If the game is won, the row that won the game is colored accordingly
+ * @return true when the current game is won, false otherwise
  */
 function checkWin(){
   for (let row = 0; row < 4; row++) {
-    if(grid[row][0] == true && grid[row][1] == true && grid[row][2] == true && grid[row][3] == true){
+    if(grid[row][0] && grid[row][1] && grid[row][2] && grid[row][3]){
       colorWinningRow(row, -1);
       return true;
     }
   }
   for (let col = 0; col < 4; col++) {
-    if(grid[0][col] == true && grid[1][col] == true && grid[2][col] == true && grid[3][col] == true){
+    if(grid[0][col] && grid[1][col] && grid[2][col] && grid[3][col]){
       colorWinningRow(-1, col);
       return true;
     }
@@ -123,7 +128,7 @@ function onWin(){
  * If the win condition was met in a row, col must be -1 and otherwise
  */
 function colorWinningRow(row, col){
-  if(col == -1){
+  if(col === -1){
     for (let i = 0; i < 4; i++) {
       document.getElementById(row+''+i).classList.add('winningrow');
     }
