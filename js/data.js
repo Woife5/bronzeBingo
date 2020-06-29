@@ -1,9 +1,12 @@
 // Every BronzeBingo variant needs at least 16 different phrases! (4x4)
 
+/**
+ * This object contains all data and game modes for bronzeBingo
+ */
 let bronzeBingo = {
-    "version" : "1.2.4",
+    "version" : "1.2.5",
+    "versionDate" : "2020-06-29",
     "author" : "Wolfgang Schwendtbauer",
-    "gameModeCount" : 2,
     "enableJsBingo" : function() {
         "Hello there!";
         "type bronzeBingo.enableJsBingo() to enable JavaScript Bingo";
@@ -33,6 +36,7 @@ let bronzeBingo = {
         resetGame();
         return "Game reset. JavaScript Bingo is now available."
     },
+    "gameModeCount" : 2,
     "gameModes" : {
         // --- Bronze Bingo ---
         "bronze" : {
