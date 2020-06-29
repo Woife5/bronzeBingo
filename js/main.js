@@ -1,9 +1,14 @@
+// Declare and initialize global variables
+// The initialisation tells the editor which type every variable uses
 let grid = [[false]];
 let phrases = [""];
 let won = false;
-const modeselect = document.getElementById('modeselect');
 
+// Add change listener to the mode selector
+const modeselect = document.getElementById('modeselect');
 modeselect.addEventListener('change', resetGame);
+
+// Initialize game
 resetGame();
 
 /**
@@ -28,10 +33,9 @@ function resetGame(){
   document.getElementById('bingo').classList.remove('bingo');
 
   // Remove the active and winning paint from each tile
-  let elem;
   for(let row = 0; row < 4; row++){
     for(let col = 0; col < 4; col++){
-      elem = document.getElementById(row+''+col);
+      const elem = document.getElementById(row+''+col);
       elem.innerHTML = phrases[row*4+col];
       elem.classList.remove('done');
       elem.classList.remove('winningrow');
@@ -69,10 +73,9 @@ function resetModeSelector(){
  * @param {Array} a The array to be shuffled
  */
 function shuffle(a) {
-    let j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
+    for (let i = a.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let x = a[i];
         a[i] = a[j];
         a[j] = x;
     }
@@ -118,7 +121,7 @@ function checkWin(){
  * This method activates the reset option and colors Bingo green
  */
 function onWin(){
-  won = true
+  won = true;
   document.getElementById('restarttext').style.display="block";
   document.getElementById('bingo').classList.add('bingo');
 }
