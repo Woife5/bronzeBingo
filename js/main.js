@@ -30,15 +30,14 @@ function resetGame(){
 
   // Remove the restart text and green color from Bingo
   document.getElementById('restarttext').style.display="none";
-  document.getElementById('bingo').classList.remove('bingo');
+  document.getElementById('bingo').classList = "";
 
   // Remove the active and winning paint from each tile
   for(let row = 0; row < 4; row++){
     for(let col = 0; col < 4; col++){
       const elem = document.getElementById(row+''+col);
       elem.innerHTML = phrases[row*4+col];
-      elem.classList.remove('done');
-      elem.classList.remove('winningrow');
+      elem.classList = "";
       elem.onClick = function() {onClick(row,col)};
     }
   }
@@ -50,6 +49,8 @@ function resetGame(){
     [false, false, false, false],
     [false, false, false, false]
   ];
+
+  updateColorMode();
 }
 
 /**
@@ -87,7 +88,7 @@ function shuffle(a) {
 function onClick(row, col){
   grid[row][col] = true;
   let elem = document.getElementById(row+''+col);
-  elem.classList.add('done');
+  addClassToElementById( (row+''+col), "done");
   elem.onClick = null;
 
   if ( !won ) {
@@ -123,7 +124,7 @@ function checkWin(){
 function onWin(){
   won = true;
   document.getElementById('restarttext').style.display="block";
-  document.getElementById('bingo').classList.add('bingo');
+  addClassToElementById("bingo", "bingo");
 }
 
 /**
@@ -133,11 +134,46 @@ function onWin(){
 function colorWinningRow(row, col){
   if(col === -1){
     for (let i = 0; i < 4; i++) {
-      document.getElementById(row+''+i).classList.add('winningrow');
+      addClassToElementById( (row+''+i), "winningrow" );
     }
   }else{
     for (let i = 0; i < 4; i++) {
-      document.getElementById(i+''+col).classList.add('winningrow');
+      addClassToElementById( (i+''+col), "winningrow" );
+    }
+  }
+}
+
+/**
+ * This mehtod adds a provided classname to an element. If the darkmode is set to true,
+ * this class will put the string "dark" before the classname, indicating that the css
+ * rules for the dark appearence should be used.
+ * @param {*} element Element the class should be added to
+ * @param {*} classToAdd Class that should be added
+ */
+function addClassToElementById(element, classToAdd){
+  document.getElementById(element).classList.add(
+    (bronzeBingo.darkmode ? "dark" : "")
+    + classToAdd
+  );
+}
+
+/**
+ * Update the darkmode settings on the body and links.
+ */
+function updateColorMode(){
+  if(bronzeBingo.darkmode){
+    document.getElementsByTagName("body")[0].classList.add("darkbody");
+
+    let links = document.getElementsByClassName("link");
+    for (let i = 0; i < links.length; i++) {
+      links[i].classList.add("darklink");
+    }
+  }else{
+    document.getElementsByTagName("body")[0].classList.remove("darkbody");
+
+    let links = document.getElementsByClassName("link");
+    for (let i = 0; i < links.length; i++) {
+      links[i].classList.remove("darklink");
     }
   }
 }
