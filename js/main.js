@@ -89,7 +89,7 @@ function onClick(row, col){
   grid[row][col] = true;
   let elem = document.getElementById(row+''+col);
   addClassToElementById( (row+''+col), "done");
-  elem.onClick = null;
+  elem.onClick = function() {};
 
   if ( !won ) {
     if( checkWin() ){
