@@ -1,10 +1,10 @@
 body{
   user-select: none;
+  text-align: center;
 }
 
 #bronzebingo{
   margin: 0 auto;
-  text-align: center;
   border-collapse: collapse;
   height: 70vh;
   width: 70vh;
@@ -12,7 +12,6 @@ body{
 
 th, td{
   margin: 0 auto;
-  text-align: center;
   border: 3px solid black;
   width: 25%;
   background: #808080;
@@ -32,7 +31,6 @@ th, td{
 }
 
 h1{
-  text-align: center;
   font-size: 6vh;
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -40,7 +38,6 @@ h1{
 }
 
 #restarttext{
-  text-align: center;
   font-size: 2vh;
   margin-bottom: 10px;
 }
@@ -53,7 +50,6 @@ h1{
 }
 
 .suggestions{
-  text-align: center;
   margin-top: 10px;
 }
 
@@ -74,14 +70,17 @@ h1{
   body{
     margin: 0px;
   }
+
   #bronzebingo{
     height: 100vw;
     width: 100vw;
   }
+
   th, td{
     font-size: 4vw;
     transition: 0.15s;
   }
+  
   h1{
     font-size: 8vw;
   }
