@@ -8,6 +8,12 @@ let won = false;
 const modeselect = document.getElementById('modeselect');
 modeselect.addEventListener('change', resetGame);
 
+// Get darkmode setting
+if(localStorage.getItem('darkmode') === 'true') {
+  bronzeBingo.darkmode = localStorage.getItem('darkmode') === 'true';
+  updateColorMode();
+}
+
 // Initialize game
 resetGame();
 
