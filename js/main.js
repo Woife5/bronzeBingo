@@ -49,8 +49,6 @@ function resetGame(){
     [false, false, false, false],
     [false, false, false, false]
   ];
-
-  updateColorMode();
 }
 
 /**
@@ -161,19 +159,58 @@ function addClassToElementById(element, classToAdd){
  * Update the darkmode settings on the body and links.
  */
 function updateColorMode(){
-  if(bronzeBingo.darkmode){
-    document.getElementsByTagName("body")[0].classList.add("darkbody");
+  let body = document.getElementsByTagName("body")[0];
+  let links = document.getElementsByClassName("link");
 
-    let links = document.getElementsByClassName("link");
+  if(bronzeBingo.darkmode) {
+    // Enable darkmode
+    body.classList.add("darkbody");
+
     for (let i = 0; i < links.length; i++) {
       links[i].classList.add("darklink");
     }
-  }else{
-    document.getElementsByTagName("body")[0].classList.remove("darkbody");
 
-    let links = document.getElementsByClassName("link");
+    const bingotext = document.querySelectorAll(".bingo");
+    for (let i = 0; i < bingotext.length; i++) {
+      bingotext[i].classList.remove("bingo");
+      bingotext[i].classList.add("darkbingo");
+    }
+
+    const done = document.querySelectorAll(".done");
+    for (let i = 0; i < done.length; i++) {
+      done[i].classList.remove("done");
+      done[i].classList.add("darkdone");
+    }
+
+    const winning = document.querySelectorAll(".winningrow");
+    for (let i = 0; i < winning.length; i++) {
+      winning[i].classList.remove("winningrow");
+      winning[i].classList.add("darkwinningrow");
+    }
+  }else {
+    // Disable darkmode
+    body.classList.remove("darkbody");
+
     for (let i = 0; i < links.length; i++) {
       links[i].classList.remove("darklink");
+    }
+
+    const bingotext = document.querySelectorAll(".darkbingo");
+    for (let i = 0; i < bingotext.length; i++) {
+      bingotext[i].classList.remove("darkbingo");
+      bingotext[i].classList.add("bingo");
+    }
+
+    const done = document.querySelectorAll(".darkdone");
+    for (let i = 0; i < done.length; i++) {
+      done[i].classList.remove("darkdone");
+      done[i].classList.add("done");
+    }
+
+    const winning = document.querySelectorAll(".darkwinningrow");
+    for (let i = 0; i < winning.length; i++) {
+      winning[i].classList.remove("darkwinningrow");
+      winning[i].classList.add("winningrow");
     }
   }
 }

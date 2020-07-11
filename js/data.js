@@ -4,12 +4,12 @@
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version" : "1.3.2",
-    "versionDate" : "2020-07-05",
+    "version" : "1.4.0",
+    "versionDate" : "2020-07-11",
     "author" : "Wolfgang Schwendtbauer",
     "toggleDarkMode" : function() {
         this.darkmode = !this.darkmode;
-        resetGame();
+        updateColorMode();
     },
     "darkmode" : false,
     "enableJsBingo" : function() {
