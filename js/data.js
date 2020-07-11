@@ -4,7 +4,7 @@
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version" : "1.4.0",
+    "version" : "1.4.1",
     "versionDate" : "2020-07-11",
     "author" : "Wolfgang Schwendtbauer",
     "toggleDarkMode" : function() {
@@ -41,7 +41,7 @@ let bronzeBingo = {
         resetGame();
         return "Game reset. JavaScript Bingo is now available."
     },
-    "gameModeCount" : 2,
+    "gameModeCount" : 3,
     "gameModes" : {
         // --- Bronze Bingo ---
         "bronze" : {
@@ -92,6 +92,29 @@ let bronzeBingo = {
                 "Perfect Power Slide",
                 "Finish in last place",
                 "Use a shortcut"
+            ]
+        },
+        // --- Normal Bingo ---
+        "bingo" : {
+            "name" : "Bingo",
+            "description" : "Normalo Bingo",
+            "data" : [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16"
             ]
         }
     }
