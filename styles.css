@@ -1,6 +1,7 @@
 body{
   user-select: none;
   text-align: center;
+  transition: 0.3s;
 }
 
 #bronzebingo{
