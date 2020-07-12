@@ -15,3 +15,12 @@
     --tile-winning: #097523;
     --link-color: lightblue;
 }
+
+.ultralight{
+    --background: white;
+    --text-color: black;
+    --tile-background: white;
+    --tile-done: rgb(235, 235, 235);
+    --tile-winning: rgb(204, 204, 204);
+    --link-color: black;
+}

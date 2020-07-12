@@ -4,7 +4,7 @@
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version" : "1.5.0",
+    "version" : "1.6.0",
     "versionDate" : "2020-07-12",
     "author" : "Wolfgang Schwendtbauer",
     "toggleDarkMode" : function() {
@@ -12,7 +12,6 @@ let bronzeBingo = {
         localStorage.setItem('darkmode', this.darkmode);
         updateColorMode();
     },
-    "darkmode" : false,
     "enableJsBingo" : function() {
         "Hello there!";
         "type bronzeBingo.enableJsBingo() to enable JavaScript Bingo";
@@ -42,6 +41,21 @@ let bronzeBingo = {
         resetGame();
         return "Game reset. JavaScript Bingo is now available."
     },
+    "colorMode" : 0,
+    "colorModes" : [
+        {
+            "name" : "Light Mode",
+            "mode" : "light"
+        },
+        {
+            "name" : "Dark Mode",
+            "mode" : "dark"
+        },
+        {
+            "name" : "Ultralight Mode",
+            "mode" : "ultralight"
+        }
+    ],
     "gameModeCount" : 3,
     "gameModes" : {
         // --- Bronze Bingo ---

@@ -8,14 +8,19 @@ let won = false;
 const modeselect = document.getElementById('modeselect');
 modeselect.addEventListener('change', resetGame);
 
-// Get darkmode setting
-if(localStorage.getItem('darkmode') === 'true') {
-  bronzeBingo.darkmode = localStorage.getItem('darkmode') === 'true';
-  updateColorMode();
-}
+// Add chnage listener to the color selector
+const colorselect = document.getElementById('colorselect');
+colorselect.addEventListener('change', updateColorMode);
 
 // Initialize game
 resetGame();
+
+// Check if the colormode is already set in localStorage and apply if it is set
+if (localStorage.getItem('colormode') && ( Number( localStorage.getItem('colormode') < bronzeBingo.colorModes.length ) ) ) {
+  bronzeBingo.colorMode = localStorage.getItem('colormode');
+  applyColorMode();
+  colorselect.options.selectedIndex = bronzeBingo.colorMode;
+}
 
 /**
  * Resets the entire game board
@@ -25,6 +30,11 @@ function resetGame(){
   // can be added by the user and the program can work with it.
   if (modeselect.childElementCount !== bronzeBingo.gameModeCount) {
     resetModeSelector();
+  }
+
+  // Check if the color selector contains all color modes
+  if(colorselect.childElementCount !== bronzeBingo.colorModes.length) {
+    resetColorSelector();
   }
 
   // Check the currently selected gamemode and set its phrases
@@ -70,6 +80,20 @@ function resetModeSelector(){
     option.value = modes[i];
     option.textContent = bronzeBingo.gameModes[modes[i]].name;
     modeselect.appendChild(option);
+  }
+}
+
+/**
+ * Reset the color selector
+ */
+function resetColorSelector(){
+  colorselect.innerHTML = '';
+
+  for (let i = 0; i < bronzeBingo.colorModes.length; i++) {
+    const option = document.createElement('option');
+    option.value = bronzeBingo.colorModes[i].mode;
+    option.textContent = bronzeBingo.colorModes[i].name;
+    colorselect.appendChild(option);
   }
 }
 
@@ -153,12 +177,15 @@ function colorWinningRow(row, col){
  * This function updates the color mode by swapping the class on the body.
  */
 function updateColorMode(){
+  bronzeBingo.colorMode = colorselect.selectedIndex;
+  localStorage.setItem('colormode', bronzeBingo.colorMode);
+  applyColorMode();
+}
+
+/**
+ * Applys the currently selected colormode
+ */
+function applyColorMode(){
   const body = document.getElementsByTagName('body')[0];
-  if(bronzeBingo.darkmode){
-    body.classList.remove('light');
-    body.classList.add('dark');
-  }else{
-    body.classList.remove('dark');
-    body.classList.add('light');
-  }
+  body.className = bronzeBingo.colorModes[bronzeBingo.colorMode].mode;
 }
