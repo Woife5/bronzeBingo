@@ -92,7 +92,7 @@ function shuffle(a) {
 function onClick(row, col){
   grid[row][col] = true;
   let elem = document.getElementById(row+''+col);
-  addClassToElementById( (row+''+col), "done");
+  elem.classList.add('done');
   elem.onClick = function() {};
 
   if ( !won ) {
@@ -128,7 +128,7 @@ function checkWin(){
 function onWin(){
   won = true;
   document.getElementById('restarttext').style.display="block";
-  addClassToElementById("bingo", "bingo");
+  document.getElementById('bingo').classList.add('bingo');
 }
 
 /**
@@ -138,85 +138,27 @@ function onWin(){
 function colorWinningRow(row, col){
   if(col === -1){
     for (let i = 0; i < 4; i++) {
-      addClassToElementById( (row+''+i), "winningrow" );
+      const elem = document.getElementById(row+''+i);
+      elem.classList.add('winningrow');
     }
   }else{
     for (let i = 0; i < 4; i++) {
-      addClassToElementById( (i+''+col), "winningrow" );
+      const elem = document.getElementById(i+''+col);
+      elem.classList.add('winningrow');
     }
   }
 }
 
 /**
- * This mehtod adds a provided classname to an element. If the darkmode is set to true,
- * this class will put the string "dark" before the classname, indicating that the css
- * rules for the dark appearence should be used.
- * @param {*} element Element the class should be added to
- * @param {*} classToAdd Class that should be added
- */
-function addClassToElementById(element, classToAdd){
-  document.getElementById(element).classList.add(
-    (bronzeBingo.darkmode ? "dark" : "")
-    + classToAdd
-  );
-}
-
-/**
- * Update the darkmode settings on the body and links.
+ * This function updates the color mode by swapping the class on the body.
  */
 function updateColorMode(){
-  let body = document.getElementsByTagName("body")[0];
-  let links = document.getElementsByClassName("link");
-
-  if(bronzeBingo.darkmode) {
-    // Enable darkmode
-    body.classList.add("darkbody");
-
-    for (let i = 0; i < links.length; i++) {
-      links[i].classList.add("darklink");
-    }
-
-    const bingotext = document.querySelectorAll(".bingo");
-    for (let i = 0; i < bingotext.length; i++) {
-      bingotext[i].classList.remove("bingo");
-      bingotext[i].classList.add("darkbingo");
-    }
-
-    const done = document.querySelectorAll(".done");
-    for (let i = 0; i < done.length; i++) {
-      done[i].classList.remove("done");
-      done[i].classList.add("darkdone");
-    }
-
-    const winning = document.querySelectorAll(".winningrow");
-    for (let i = 0; i < winning.length; i++) {
-      winning[i].classList.remove("winningrow");
-      winning[i].classList.add("darkwinningrow");
-    }
-  }else {
-    // Disable darkmode
-    body.classList.remove("darkbody");
-
-    for (let i = 0; i < links.length; i++) {
-      links[i].classList.remove("darklink");
-    }
-
-    const bingotext = document.querySelectorAll(".darkbingo");
-    for (let i = 0; i < bingotext.length; i++) {
-      bingotext[i].classList.remove("darkbingo");
-      bingotext[i].classList.add("bingo");
-    }
-
-    const done = document.querySelectorAll(".darkdone");
-    for (let i = 0; i < done.length; i++) {
-      done[i].classList.remove("darkdone");
-      done[i].classList.add("done");
-    }
-
-    const winning = document.querySelectorAll(".darkwinningrow");
-    for (let i = 0; i < winning.length; i++) {
-      winning[i].classList.remove("darkwinningrow");
-      winning[i].classList.add("winningrow");
-    }
+  const body = document.getElementsByTagName('body')[0];
+  if(bronzeBingo.darkmode){
+    body.classList.remove('light');
+    body.classList.add('dark');
+  }else{
+    body.classList.remove('dark');
+    body.classList.add('light');
   }
 }

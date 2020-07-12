@@ -2,6 +2,8 @@ body{
   user-select: none;
   text-align: center;
   transition: 0.3s;
+  background: var(--background);
+  color: var(--text-color);
 }
 
 #bronzebingo{
@@ -15,7 +17,7 @@ th, td{
   margin: 0 auto;
   border: 3px solid black;
   width: 25%;
-  background: #808080;
+  background: var(--tile-background);
   cursor: pointer;
   transition: 0.5s;
   font-size: 2.5vh;
@@ -23,12 +25,12 @@ th, td{
 }
 
 .done{
-  background: #16B3C4;
+  background: var(--tile-done);
   cursor: auto;
 }
 
 .winningrow{
-  background: #0FB535;
+  background: var(--tile-winning);
 }
 
 h1{
@@ -47,7 +49,7 @@ h1{
   font-family: 'Roboto', sans-serif;
   text-decoration: underline;
   cursor:pointer;
-  color: blue;
+  color: var(--link-color);
 }
 
 .suggestions{
@@ -56,7 +58,7 @@ h1{
 
 .bingo{
   font-weight: bold;
-  color: #0FB535;
+  color: var(--tile-winning);
 }
 
 #bingo{
@@ -89,34 +91,4 @@ h1{
   p{
     font-size: 3vw;
   }
-}
-
-/* Classes for darkmode */
-
-.darkbody{
-  color: whitesmoke;
-  background-color: #363636;
-}
-
-.darkdone{
-  background: #0d828f;
-  cursor: auto;
-}
-
-.darkwinningrow{
-  background-color: #097523;
-}
-
-.darkbingo{
-  font-weight: bold;
-  color: #097523;
-}
-
-.darkbingo{
-  font-weight: bold;
-  color: #097523;
-}
-
-.darklink{
-  color: lightblue;
 }

@@ -1,0 +1,17 @@
+.light{
+    --background: whitesmoke;
+    --text-color: black;
+    --tile-background: #808080;
+    --tile-done: #16B3C4;
+    --tile-winning: #0FB535;
+    --link-color: blue;
+}
+
+.dark{
+    --background: #1c1c1c;
+    --text-color: whitesmoke;
+    --tile-background: #6e6e6e;
+    --tile-done: #0d828f;
+    --tile-winning: #097523;
+    --link-color: lightblue;
+}
