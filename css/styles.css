@@ -2,7 +2,7 @@ body{
   user-select: none;
   text-align: center;
   transition: 0.3s;
-  background: var(--background);
+  background: var(--background-color);
   color: var(--text-color);
 }
 
@@ -15,7 +15,7 @@ body{
 
 th, td{
   margin: 0 auto;
-  border: 3px solid black;
+  border: 2px solid var(--border-color);
   width: 25%;
   background: var(--tile-background);
   cursor: pointer;
@@ -26,11 +26,13 @@ th, td{
 
 .done{
   background: var(--tile-done);
+  color: var(--tile-done-textcolor);
   cursor: auto;
 }
 
 .winningrow{
   background: var(--tile-winning);
+  color: var(--tile-winning-textcolor);
 }
 
 h1{

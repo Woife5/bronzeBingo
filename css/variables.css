@@ -1,26 +1,47 @@
 .light{
-    --background: whitesmoke;
+    --background-color: whitesmoke;
     --text-color: black;
     --tile-background: #808080;
     --tile-done: #16B3C4;
+    --tile-done-textcolor: var(--text-color);
     --tile-winning: #0FB535;
+    --tile-winning-textcolor: var(--text-color);
     --link-color: blue;
+    --border-color: black;
 }
 
 .dark{
-    --background: #1c1c1c;
+    --background-color: #1c1c1c;
     --text-color: whitesmoke;
     --tile-background: #6e6e6e;
     --tile-done: #0d828f;
+    --tile-done-textcolor: var(--text-color);
     --tile-winning: #097523;
+    --tile-winning-textcolor: var(--text-color);
     --link-color: lightblue;
+    --border-color: black;
 }
 
 .ultralight{
-    --background: white;
+    --background-color: white;
     --text-color: black;
     --tile-background: white;
     --tile-done: rgb(235, 235, 235);
-    --tile-winning: rgb(204, 204, 204);
-    --link-color: black;
+    --tile-done-textcolor: var(--text-color);
+    --tile-winning: rgb(128, 192, 137);
+    --tile-winning-textcolor: var(--text-color);
+    --link-color: lightblue;
+    --border-color: var(--text-color);
+}
+
+.ultradark{
+    --background-color: black;
+    --text-color: lightgray;
+    --tile-background: black;
+    --tile-done: #474747;
+    --tile-done-textcolor: var(--text-color);
+    --tile-winning: #154606;
+    --tile-winning-textcolor: var(--text-color);
+    --link-color: var(--text-color);
+    --border-color: rgb(100, 100, 100);
 }
