@@ -12,15 +12,24 @@ modeselect.addEventListener('change', resetGame);
 const colorselect = document.getElementById('colorselect');
 colorselect.addEventListener('change', updateColorMode);
 
-// Initialize game
-resetGame();
+// Initialize mode and color selectors
+resetColorSelector();
+resetModeSelector();
+
+// Check if gamemode is already set in localStorage and apply if it is set
+if (localStorage.getItem('gamemode') && ( Number( localStorage.getItem('gamemode') ) < bronzeBingo.gameModeCount ) ) {
+  modeselect.options.selectedIndex = localStorage.getItem('gamemode');
+}
 
 // Check if the colormode is already set in localStorage and apply if it is set
-if (localStorage.getItem('colormode') && ( Number( localStorage.getItem('colormode') < bronzeBingo.colorModes.length ) ) ) {
+if (localStorage.getItem('colormode') && ( Number( localStorage.getItem('colormode') ) < bronzeBingo.colorModes.length ) ) {
   bronzeBingo.colorMode = localStorage.getItem('colormode');
   applyColorMode();
   colorselect.options.selectedIndex = bronzeBingo.colorMode;
 }
+
+// Initialize game
+resetGame();
 
 /**
  * Resets the entire game board
@@ -42,6 +51,10 @@ function resetGame(){
 
   // Set name of currently set gamemode
   document.getElementById('bingo').innerText = bronzeBingo.gameModes[curmode].name
+
+  // Store current gammode in localstorage
+  let gamemode = Object.keys(bronzeBingo.gameModes).indexOf(curmode);
+  localStorage.setItem('gamemode', gamemode);
 
   // Check the currently selected gamemode and set its phrases
   phrases = bronzeBingo.gameModes[curmode].data;
