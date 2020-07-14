@@ -1,17 +1,10 @@
-// Every BronzeBingo variant needs at least 16 different phrases! (4x4)
-
 /**
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version" : "1.6.3",
+    "version" : "1.6.4",
     "versionDate" : "2020-07-14",
     "author" : "Wolfgang Schwendtbauer",
-    "toggleDarkMode" : function() {
-        this.darkmode = !this.darkmode;
-        localStorage.setItem('darkmode', this.darkmode);
-        updateColorMode();
-    },
     "enableJsBingo" : function() {
         "Hello there!";
         "type bronzeBingo.enableJsBingo() to enable JavaScript Bingo";

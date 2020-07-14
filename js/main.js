@@ -31,6 +31,9 @@ if (localStorage.getItem('colormode') && ( Number( localStorage.getItem('colormo
 // Initialize game
 resetGame();
 
+// Show game version in the title
+document.getElementsByTagName('title')[0].textContent += ' ' + bronzeBingo.version;
+
 /**
  * Resets the entire game board
  */
@@ -41,11 +44,6 @@ function resetGame(){
     resetModeSelector();
   }
   
-  // Check if the color selector contains all color modes
-  if(colorselect.childElementCount !== bronzeBingo.colorModes.length) {
-    resetColorSelector();
-  }
-
   // Currently selected gamemode
   const curmode = modeselect.options[modeselect.selectedIndex].value;
 
