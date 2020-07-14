@@ -15,7 +15,7 @@ body{
 
 th, td{
   margin: 0 auto;
-  border: 2px solid var(--border-color);
+  border: 3px solid var(--border-color);
   width: 25%;
   background: var(--tile-background);
   cursor: pointer;
@@ -50,7 +50,7 @@ h1{
 .link{
   font-family: 'Roboto', sans-serif;
   text-decoration: underline;
-  cursor:pointer;
+  cursor: pointer;
   color: var(--link-color);
 }
 
@@ -84,6 +84,7 @@ h1{
   th, td{
     font-size: 4vw;
     transition: 0.15s;
+    border-width: 2px;
   }
   
   h1{

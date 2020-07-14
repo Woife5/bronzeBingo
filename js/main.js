@@ -31,14 +31,20 @@ function resetGame(){
   if (modeselect.childElementCount !== bronzeBingo.gameModeCount) {
     resetModeSelector();
   }
-
+  
   // Check if the color selector contains all color modes
   if(colorselect.childElementCount !== bronzeBingo.colorModes.length) {
     resetColorSelector();
   }
 
+  // Currently selected gamemode
+  const curmode = modeselect.options[modeselect.selectedIndex].value;
+
+  // Set name of currently set gamemode
+  document.getElementById('bingo').innerText = bronzeBingo.gameModes[curmode].name
+
   // Check the currently selected gamemode and set its phrases
-  phrases = bronzeBingo.gameModes[modeselect.options[modeselect.selectedIndex].value].data;
+  phrases = bronzeBingo.gameModes[curmode].data;
   
   // Reset the won variable and reshuffle the phrases array
   won = false;
