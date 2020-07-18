@@ -2,8 +2,8 @@
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version" : "1.6.4",
-    "versionDate" : "2020-07-14",
+    "version" : "1.6.5",
+    "versionDate" : "2020-07-18",
     "author" : "Wolfgang Schwendtbauer",
     "enableJsBingo" : function() {
         "Hello there!";
@@ -51,6 +51,10 @@ let bronzeBingo = {
         {
             "name" : "Ultradark Mode",
             "mode" : "ultradark"
+        },
+        {
+            "name" : "High Contrast",
+            "mode" : "highcontrast"
         }
     ],
     "gameModeCount" : 3,

@@ -2,6 +2,7 @@
     --background-color: whitesmoke;
     --text-color: black;
     --tile-background: #808080;
+    --tile-textcolor: var(--text-color);
     --tile-done: #16B3C4;
     --tile-done-textcolor: var(--text-color);
     --tile-winning: #0FB535;
@@ -14,6 +15,7 @@
     --background-color: #1c1c1c;
     --text-color: whitesmoke;
     --tile-background: #6e6e6e;
+    --tile-textcolor: var(--text-color);
     --tile-done: #0d828f;
     --tile-done-textcolor: var(--text-color);
     --tile-winning: #097523;
@@ -26,6 +28,7 @@
     --background-color: white;
     --text-color: black;
     --tile-background: white;
+    --tile-textcolor: var(--text-color);
     --tile-done: rgb(235, 235, 235);
     --tile-done-textcolor: var(--text-color);
     --tile-winning: rgb(128, 192, 137);
@@ -38,9 +41,23 @@
     --background-color: black;
     --text-color: lightgray;
     --tile-background: black;
+    --tile-textcolor: var(--text-color);
     --tile-done: #474747;
     --tile-done-textcolor: var(--text-color);
     --tile-winning: #154606;
+    --tile-winning-textcolor: var(--text-color);
+    --link-color: var(--text-color);
+    --border-color: rgb(100, 100, 100);
+}
+
+.highcontrast{
+    --background-color: white;
+    --text-color: black;
+    --tile-background: black;
+    --tile-textcolor: white;
+    --tile-done: #eb34de;
+    --tile-done-textcolor: var(--text-color);
+    --tile-winning: #3cff00;
     --tile-winning-textcolor: var(--text-color);
     --link-color: var(--text-color);
     --border-color: rgb(100, 100, 100);
