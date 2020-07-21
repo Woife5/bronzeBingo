@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>BronzeBingo</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" type="image/png" href="favicon.png">
-  </head>
-  <body class="light">
-    <h1 id="bingo">Bronze Bingo</h1>
-    <a id="restarttext" class="link" style="display:none;" onClick="resetGame()">Click here to restart!</a>
-    <table id="bronzebingo">
-      <tr>
-        <td id="00" onClick="onClick(0,0)"></td>
-        <td id="01" onClick="onClick(0,1)"></td>
-        <td id="02" onClick="onClick(0,2)"></td>
-        <td id="03" onClick="onClick(0,3)"></td>
-      </tr>
-      <tr>
-        <td id="10" onClick="onClick(1,0)"></td>
-        <td id="11" onClick="onClick(1,1)"></td>
-        <td id="12" onClick="onClick(1,2)"></td>
-        <td id="13" onClick="onClick(1,3)"></td>
-      </tr>
-      <tr>
-        <td id="20" onClick="onClick(2,0)"></td>
-        <td id="21" onClick="onClick(2,1)"></td>
-        <td id="22" onClick="onClick(2,2)"></td>
-        <td id="23" onClick="onClick(2,3)"></td>
-      </tr>
-      <tr>
-        <td id="30" onClick="onClick(3,0)"></td>
-        <td id="31" onClick="onClick(3,1)"></td>
-        <td id="32" onClick="onClick(3,2)"></td>
-        <td id="33" onClick="onClick(3,3)"></td>
-      </tr>
-    </table>
-    <div class="suggestions">
-      <select name="colorselect" id="colorselect" class="modeselect">
-      </select>
-      <select name="modeselect" id="modeselect" class="modeselect">
-      </select>
-      <a class="link" href="https://docs.google.com/spreadsheets/d/1tJAOjXcsH9sbAg0HY5x-P0lhF35yVbA1TMkyFK1lArQ/edit?usp=sharing" target="_blank">Suggestions</a>
-    </div>
-    <script src="js/data.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>BronzeBingo</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body class="light">
+  <h1 id="bingo">Bronze Bingo</h1>
+  <a id="restarttext" class="link" style="display:none;" onClick="resetGame()">Click here to restart!</a>
+  <table id="bronzebingo">
+    <tr>
+      <td id="00" onClick="onClick(0,0)"></td>
+      <td id="01" onClick="onClick(0,1)"></td>
+      <td id="02" onClick="onClick(0,2)"></td>
+      <td id="03" onClick="onClick(0,3)"></td>
+    </tr>
+    <tr>
+      <td id="10" onClick="onClick(1,0)"></td>
+      <td id="11" onClick="onClick(1,1)"></td>
+      <td id="12" onClick="onClick(1,2)"></td>
+      <td id="13" onClick="onClick(1,3)"></td>
+    </tr>
+    <tr>
+      <td id="20" onClick="onClick(2,0)"></td>
+      <td id="21" onClick="onClick(2,1)"></td>
+      <td id="22" onClick="onClick(2,2)"></td>
+      <td id="23" onClick="onClick(2,3)"></td>
+    </tr>
+    <tr>
+      <td id="30" onClick="onClick(3,0)"></td>
+      <td id="31" onClick="onClick(3,1)"></td>
+      <td id="32" onClick="onClick(3,2)"></td>
+      <td id="33" onClick="onClick(3,3)"></td>
+    </tr>
+  </table>
+  <div class="suggestions">
+    <select name="colorselect" id="colorselect" class="modeselect">
+    </select>
+    <select name="modeselect" id="modeselect" class="modeselect">
+    </select>
+    <a class="link"
+      href="https://docs.google.com/spreadsheets/d/1tJAOjXcsH9sbAg0HY5x-P0lhF35yVbA1TMkyFK1lArQ/edit?usp=sharing"
+      target="_blank">Suggestions</a>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>

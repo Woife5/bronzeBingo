@@ -2,16 +2,16 @@
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version" : "1.6.6",
-    "versionDate" : "2020-07-21",
-    "author" : "Wolfgang Schwendtbauer",
-    "enableJsBingo" : function() {
+    "version": "1.6.7",
+    "versionDate": "2020-07-21",
+    "author": "Wolfgang Schwendtbauer",
+    "enableJsBingo": function () {
         "Hello there!";
         "type bronzeBingo.enableJsBingo() to enable JavaScript Bingo";
-        
+
         this.gameModes.javascript = {
-            "name" : "JavaScript Bingo",
-            "data" : [
+            "name": "JavaScript Bingo",
+            "data": [
                 "object Object",
                 "[]",
                 "{}",
@@ -34,36 +34,36 @@ let bronzeBingo = {
         resetGame();
         return "Game reset. JavaScript Bingo is now available."
     },
-    "colorMode" : 1,
-    "colorModes" : [
+    "colorMode": 1,
+    "colorModes": [
         {
-            "name" : "Light Mode",
-            "mode" : "light"
+            "name": "Light Mode",
+            "mode": "light"
         },
         {
-            "name" : "Dark Mode",
-            "mode" : "dark"
+            "name": "Dark Mode",
+            "mode": "dark"
         },
         {
-            "name" : "Ultralight Mode",
-            "mode" : "ultralight"
+            "name": "Ultralight Mode",
+            "mode": "ultralight"
         },
         {
-            "name" : "Ultradark Mode",
-            "mode" : "ultradark"
+            "name": "Ultradark Mode",
+            "mode": "ultradark"
         },
         {
-            "name" : "High Contrast",
-            "mode" : "highcontrast"
+            "name": "High Contrast",
+            "mode": "highcontrast"
         }
     ],
-    "gameModeCount" : 3,
-    "gameModes" : {
+    "gameModeCount": 3,
+    "gameModes": {
         // --- Bronze Bingo ---
-        "bronze" : {
-            "name" : "Bronze Bingo",
-            "description" : "Original Bronze Bingo for LoL ranked with toxic teammates",
-            "data" : [
+        "bronze": {
+            "name": "Bronze Bingo",
+            "description": "Original Bronze Bingo for LoL ranked with toxic teammates",
+            "data": [
                 "kys",
                 "Bronze",
                 "idiot",
@@ -85,10 +85,10 @@ let bronzeBingo = {
             ]
         },
         // --- Mario Kart Bingo ---
-        "mariokart" : {
-            "name" : "Mario Kart Bingo",
-            "description" : "Bingo for Mario Kart singleplayer or multiplayer",
-            "data" : [
+        "mariokart": {
+            "name": "Mario Kart Bingo",
+            "description": "Bingo for Mario Kart singleplayer or multiplayer",
+            "data": [
                 "Use a mushroom",
                 "Miss an itembox",
                 "Hit by a red shell",
@@ -111,10 +111,10 @@ let bronzeBingo = {
             ]
         },
         // --- Normal Bingo ---
-        "bingo" : {
-            "name" : "Bingo",
-            "description" : "Normalo Bingo",
-            "data" : [
+        "bingo": {
+            "name": "Bingo",
+            "description": "Normalo Bingo",
+            "data": [
                 "1",
                 "2",
                 "3",

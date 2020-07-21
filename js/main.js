@@ -17,12 +17,12 @@ resetColorSelector();
 resetModeSelector();
 
 // Check if gamemode is already set in localStorage and apply if it is set
-if (localStorage.getItem('gamemode') && ( Number( localStorage.getItem('gamemode') ) < bronzeBingo.gameModeCount ) ) {
+if (localStorage.getItem('gamemode') && (Number(localStorage.getItem('gamemode')) < bronzeBingo.gameModeCount)) {
   modeselect.options.selectedIndex = localStorage.getItem('gamemode');
 }
 
 // Check if the colormode is already set in localStorage and apply if it is set
-if (localStorage.getItem('colormode') && ( Number( localStorage.getItem('colormode') ) < bronzeBingo.colorModes.length ) ) {
+if (localStorage.getItem('colormode') && (Number(localStorage.getItem('colormode')) < bronzeBingo.colorModes.length)) {
   bronzeBingo.colorMode = localStorage.getItem('colormode');
   applyColorMode();
   colorselect.options.selectedIndex = bronzeBingo.colorMode;
@@ -37,13 +37,13 @@ document.getElementsByTagName('title')[0].textContent += ' ' + bronzeBingo.versi
 /**
  * Resets the entire game board
  */
-function resetGame(){
+function resetGame() {
   // Reset the mode selector if new data has been added. This way new temporary game data
   // can be added by the user and the program can work with it.
   if (modeselect.childElementCount !== bronzeBingo.gameModeCount) {
     resetModeSelector();
   }
-  
+
   // Currently selected gamemode
   const curmode = modeselect.options[modeselect.selectedIndex].value;
 
@@ -56,22 +56,22 @@ function resetGame(){
 
   // Check the currently selected gamemode and set its phrases
   phrases = bronzeBingo.gameModes[curmode].data;
-  
+
   // Reset the won variable and reshuffle the phrases array
   won = false;
   shuffle(phrases);
 
   // Remove the restart text and green color from Bingo
-  document.getElementById('restarttext').style.display="none";
+  document.getElementById('restarttext').style.display = "none";
   document.getElementById('bingo').classList = "";
 
   // Remove the active and winning paint from each tile
-  for(let row = 0; row < 4; row++){
-    for(let col = 0; col < 4; col++){
-      const elem = document.getElementById(row+''+col);
-      elem.innerHTML = phrases[row*4+col];
+  for (let row = 0; row < 4; row++) {
+    for (let col = 0; col < 4; col++) {
+      const elem = document.getElementById(row + '' + col);
+      elem.innerHTML = phrases[row * 4 + col];
       elem.classList = "";
-      elem.onClick = function() {onClick(row,col)};
+      elem.onClick = function () { onClick(row, col) };
     }
   }
 
@@ -87,11 +87,11 @@ function resetGame(){
 /**
  * Get all game modes from bronzeBingo object again and write them to the mode selector
  */
-function resetModeSelector(){
+function resetModeSelector() {
   // Reset the mode selector
   let modes = Object.keys(bronzeBingo.gameModes);
   modeselect.innerHTML = '';
-  
+
   for (let i = 0; i < modes.length; i++) {
     const option = document.createElement('option');
     option.value = modes[i];
@@ -103,7 +103,7 @@ function resetModeSelector(){
 /**
  * Reset the color selector
  */
-function resetColorSelector(){
+function resetColorSelector() {
   colorselect.innerHTML = '';
 
   for (let i = 0; i < bronzeBingo.colorModes.length; i++) {
@@ -119,25 +119,25 @@ function resetColorSelector(){
  * @param {Array} a The array to be shuffled
  */
 function shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
+  for (let i = a.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let x = a[i];
+    a[i] = a[j];
+    a[j] = x;
+  }
 }
 
 /**
  * This method marks a square on the playing field as checked.
  */
-function onClick(row, col){
+function onClick(row, col) {
   grid[row][col] = true;
-  let elem = document.getElementById(row+''+col);
+  let elem = document.getElementById(row + '' + col);
   elem.classList.add('done');
-  elem.onClick = function() {};
+  elem.onClick = function () { };
 
-  if ( !won ) {
-    if( checkWin() ){
+  if (!won) {
+    if (checkWin()) {
       onWin();
     }
   }
@@ -148,15 +148,15 @@ function onClick(row, col){
  * If the game is won, the row that won the game is colored accordingly
  * @return true when the current game is won, false otherwise
  */
-function checkWin(){
+function checkWin() {
   for (let row = 0; row < 4; row++) {
-    if(grid[row][0] && grid[row][1] && grid[row][2] && grid[row][3]){
+    if (grid[row][0] && grid[row][1] && grid[row][2] && grid[row][3]) {
       colorWinningRow(row);
       return true;
     }
   }
   for (let col = 0; col < 4; col++) {
-    if(grid[0][col] && grid[1][col] && grid[2][col] && grid[3][col]){
+    if (grid[0][col] && grid[1][col] && grid[2][col] && grid[3][col]) {
       colorWinningCol(col);
       return true;
     }
@@ -166,9 +166,9 @@ function checkWin(){
 /**
  * This method activates the reset option and colors Bingo green
  */
-function onWin(){
+function onWin() {
   won = true;
-  document.getElementById('restarttext').style.display="block";
+  document.getElementById('restarttext').style.display = "block";
   document.getElementById('bingo').classList.add('bingo');
 }
 
@@ -176,9 +176,9 @@ function onWin(){
  * This method marks one row in the grid as the winning row
  * @param {Number} row Row-number
  */
-function colorWinningRow(row){
+function colorWinningRow(row) {
   for (let i = 0; i < 4; i++) {
-    const elem = document.getElementById(row+''+i);
+    const elem = document.getElementById(row + '' + i);
     winningTile(elem);
   }
 }
@@ -187,9 +187,9 @@ function colorWinningRow(row){
  * This method marks one column in the grid as the winning column
  * @param {Number} col Column-number
  */
-function colorWinningCol(col){
+function colorWinningCol(col) {
   for (let i = 0; i < 4; i++) {
-    const elem = document.getElementById(i+''+col);
+    const elem = document.getElementById(i + '' + col);
     winningTile(elem);
   }
 }
@@ -198,7 +198,7 @@ function colorWinningCol(col){
  * This method takes one html element, adds the 'winningrow' class and removes the 'done' class
  * @param {HTML Element} elem Element to alter
  */
-function winningTile(elem){
+function winningTile(elem) {
   elem.classList.add('winningrow');
   elem.classList.remove('done');
 }
@@ -206,7 +206,7 @@ function winningTile(elem){
 /**
  * This function updates the color mode by swapping the class on the body.
  */
-function updateColorMode(){
+function updateColorMode() {
   bronzeBingo.colorMode = colorselect.selectedIndex;
   localStorage.setItem('colormode', bronzeBingo.colorMode);
   applyColorMode();
@@ -215,7 +215,7 @@ function updateColorMode(){
 /**
  * Applys the currently selected colormode
  */
-function applyColorMode(){
+function applyColorMode() {
   const body = document.getElementsByTagName('body')[0];
   body.className = bronzeBingo.colorModes[bronzeBingo.colorMode].mode;
 }
