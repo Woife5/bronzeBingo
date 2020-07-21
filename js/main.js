@@ -1,7 +1,7 @@
 // Declare and initialize global variables
 // The initialisation tells the editor which type every variable uses
 let grid = [[false]];
-let phrases = [""];
+let phrases = [''];
 let won = false;
 
 // Add change listener to the mode selector
@@ -62,15 +62,15 @@ function resetGame() {
   shuffle(phrases);
 
   // Remove the restart text and green color from Bingo
-  document.getElementById('restarttext').style.display = "none";
-  document.getElementById('bingo').classList = "";
+  document.getElementById('restarttext').style.display = 'none';
+  document.getElementById('bingo').classList = '';
 
   // Remove the active and winning paint from each tile
   for (let row = 0; row < 4; row++) {
     for (let col = 0; col < 4; col++) {
       const elem = document.getElementById(row + '' + col);
       elem.innerHTML = phrases[row * 4 + col];
-      elem.classList = "";
+      elem.classList = '';
       elem.onClick = function () { onClick(row, col) };
     }
   }
@@ -168,7 +168,7 @@ function checkWin() {
  */
 function onWin() {
   won = true;
-  document.getElementById('restarttext').style.display = "block";
+  document.getElementById('restarttext').style.display = 'block';
   document.getElementById('bingo').classList.add('bingo');
 }
 
