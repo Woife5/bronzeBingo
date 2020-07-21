@@ -2,8 +2,8 @@
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version" : "1.6.5",
-    "versionDate" : "2020-07-18",
+    "version" : "1.6.6",
+    "versionDate" : "2020-07-21",
     "author" : "Wolfgang Schwendtbauer",
     "enableJsBingo" : function() {
         "Hello there!";
@@ -34,7 +34,7 @@ let bronzeBingo = {
         resetGame();
         return "Game reset. JavaScript Bingo is now available."
     },
-    "colorMode" : 0,
+    "colorMode" : 1,
     "colorModes" : [
         {
             "name" : "Light Mode",

@@ -151,13 +151,13 @@ function onClick(row, col){
 function checkWin(){
   for (let row = 0; row < 4; row++) {
     if(grid[row][0] && grid[row][1] && grid[row][2] && grid[row][3]){
-      colorWinningRow(row, -1);
+      colorWinningRow(row);
       return true;
     }
   }
   for (let col = 0; col < 4; col++) {
     if(grid[0][col] && grid[1][col] && grid[2][col] && grid[3][col]){
-      colorWinningRow(-1, col);
+      colorWinningCol(col);
       return true;
     }
   }
@@ -173,21 +173,34 @@ function onWin(){
 }
 
 /**
- * This method takes the row or col that won the game and marks it green
- * If the win condition was met in a row, col must be -1 and otherwise
+ * This method marks one row in the grid as the winning row
+ * @param {Number} row Row-number
  */
-function colorWinningRow(row, col){
-  if(col === -1){
-    for (let i = 0; i < 4; i++) {
-      const elem = document.getElementById(row+''+i);
-      elem.classList.add('winningrow');
-    }
-  }else{
-    for (let i = 0; i < 4; i++) {
-      const elem = document.getElementById(i+''+col);
-      elem.classList.add('winningrow');
-    }
+function colorWinningRow(row){
+  for (let i = 0; i < 4; i++) {
+    const elem = document.getElementById(row+''+i);
+    winningTile(elem);
   }
+}
+
+/**
+ * This method marks one column in the grid as the winning column
+ * @param {Number} col Column-number
+ */
+function colorWinningCol(col){
+  for (let i = 0; i < 4; i++) {
+    const elem = document.getElementById(i+''+col);
+    winningTile(elem);
+  }
+}
+
+/**
+ * This method takes one html element, adds the 'winningrow' class and removes the 'done' class
+ * @param {HTML Element} elem Element to alter
+ */
+function winningTile(elem){
+  elem.classList.add('winningrow');
+  elem.classList.remove('done');
 }
 
 /**
