@@ -62,3 +62,15 @@
     --link-color: var(--text-color);
     --border-color: rgb(100, 100, 100);
 }
+
+:root{
+    --restart-text-size: 2vh;
+    --restart-text-padding: 4vh;
+}
+
+@media screen and (orientation:portrait) {
+    :root{
+        --restart-text-size: 4vw;
+        --restart-text-padding: 6vw;
+    }
+}

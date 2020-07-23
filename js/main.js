@@ -62,7 +62,7 @@ function resetGame() {
   shuffle(phrases);
 
   // Remove the restart text and green color from Bingo
-  document.getElementById('restarttext').style.display = 'none';
+  document.getElementById('restartwrapper').classList.remove('restartopen');
   document.getElementById('bingo').classList = '';
 
   // Remove the active and winning paint from each tile
@@ -168,7 +168,7 @@ function checkWin() {
  */
 function onWin() {
   won = true;
-  document.getElementById('restarttext').style.display = 'block';
+  document.getElementById('restartwrapper').classList.add('restartopen');
   document.getElementById('bingo').classList.add('bingo');
 }
 
@@ -196,7 +196,7 @@ function colorWinningCol(col) {
 
 /**
  * This method takes one html element, adds the 'winningrow' class and removes the 'done' class
- * @param {HTML Element} elem Element to alter
+ * @param {HTMLElement} elem Element to alter
  */
 function winningTile(elem) {
   elem.classList.add('winningrow');

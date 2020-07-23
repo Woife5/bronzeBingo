@@ -10,7 +10,9 @@
 
 <body class="light">
   <h1 id="bingo">Bronze Bingo</h1>
-  <a id="restarttext" class="link" style="display:none;" onClick="resetGame()">Click here to restart!</a>
+  <div id="restartwrapper" class="restart">
+    <a class="link" class="closed" onClick="resetGame()">Click here to restart!</a>
+  </div>
   <table id="bronzebingo">
     <tr>
       <td id="00" onClick="onClick(0,0)"></td>

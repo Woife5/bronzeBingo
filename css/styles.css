@@ -43,9 +43,15 @@ h1{
   margin-bottom: 10px;
 }
 
-#restarttext{
-  font-size: 2vh;
-  margin-bottom: 10px;
+.restart{
+  font-size: var(--restart-text-size);
+  height: 0px;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+}
+
+.restartopen{
+  padding-bottom: var(--restart-text-padding);
 }
 
 .link{
@@ -100,8 +106,8 @@ h1{
     font-size: 4.5vw;
   }
 
-  #restarttext{
-    font-size: 4vw;
+  .restart{
+    font-size: var(--restart-text-size);
   }
 
   .link{
