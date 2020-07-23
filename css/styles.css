@@ -56,16 +56,16 @@ h1{
 }
 
 .suggestions{
-  margin-top: 10px;
+  margin: 20px;
 }
 
 .bingo{
-  font-weight: bold;
   color: var(--tile-winning);
 }
 
 #bingo{
   transition: 0.3s;
+  font-size: 8vh;
 }
 
 .modeselect{
@@ -93,6 +93,18 @@ h1{
   }
 
   p{
+    font-size: 3vw;
+  }
+
+  .modeselect{
+    font-size: 4.5vw;
+  }
+
+  #restarttext{
+    font-size: 4vw;
+  }
+
+  .link{
     font-size: 3vw;
   }
 }
