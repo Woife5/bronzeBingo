@@ -34,13 +34,13 @@ th, td{
 .winningrow{
   background: var(--tile-winning);
   color: var(--tile-winning-textcolor);
+  cursor: auto;
 }
 
 h1{
   font-size: 6vh;
   font-family: 'Roboto', sans-serif;
   margin: 0;
-  margin-bottom: 10px;
 }
 
 .restart{
@@ -59,6 +59,7 @@ h1{
   text-decoration: underline;
   cursor: pointer;
   color: var(--link-color);
+  margin: 0 5px;
 }
 
 .suggestions{
@@ -76,6 +77,33 @@ h1{
 
 .modeselect{
   margin-right: 15px;
+}
+
+.resetbutton{
+  display: inline-block;
+  padding: 7px 15px;
+  margin: 20px 0 20px 0;
+  font-size: 24px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: var(--tile-textcolor);
+  background-color: var(--tile-background);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  transition: 0.05s ease-in-out;
+  cursor: pointer;
+}
+
+.resetbutton:hover{
+  background-color: var(--tile-background);
+}
+
+.resetbutton:active{
+  background-color: var(--tile-background);
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
 }
 
 @media screen and (orientation:portrait) {
@@ -111,6 +139,16 @@ h1{
   }
 
   .link{
-    font-size: 3vw;
+    font-size: 1.7em;
+  }
+
+  .suggestions{
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .resetbutton{
+    font-size: 3em;
+    margin: 1.5em;
   }
 }

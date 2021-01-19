@@ -4,6 +4,13 @@ let grid = [[false]];
 let phrases = [''];
 let won = false;
 
+// Remember current timestamp to add to the time spent on page counter
+let timestampArrived = Date.now();
+
+window.onbeforeunload = function(){
+  incrementStat('timeOnPage', Date.now()-timestampArrived);
+};
+
 // Add change listener to the mode selector
 const modeselect = document.getElementById('modeselect');
 modeselect.addEventListener('change', resetGame);
@@ -48,7 +55,7 @@ function resetGame() {
   const curmode = modeselect.options[modeselect.selectedIndex].value;
 
   // Set name of currently set gamemode
-  document.getElementById('bingo').innerText = bronzeBingo.gameModes[curmode].name
+  document.getElementById('bingo').innerText = bronzeBingo.gameModes[curmode].name;
 
   // Store current gammode in localstorage
   let gamemode = Object.keys(bronzeBingo.gameModes).indexOf(curmode);
@@ -61,8 +68,8 @@ function resetGame() {
   won = false;
   shuffle(phrases);
 
-  // Remove the restart text and green color from Bingo
-  document.getElementById('restartwrapper').classList.remove('restartopen');
+  // Remove the green color from Bingo and remove reset-button color
+  document.getElementById('restartbutton').classList.remove('won');
   document.getElementById('bingo').classList = '';
 
   // Remove the active and winning paint from each tile
@@ -82,6 +89,9 @@ function resetGame() {
     [false, false, false, false],
     [false, false, false, false]
   ];
+
+  // Track games palyed counter
+  incrementStat('gamesPlayed');
 }
 
 /**
@@ -115,7 +125,7 @@ function resetColorSelector() {
 }
 
 /**
- * This method taked an array and shuffles it.
+ * This method takes an array and shuffles it.
  * @param {Array} a The array to be shuffled
  */
 function shuffle(a) {
@@ -141,6 +151,9 @@ function onClick(row, col) {
       onWin();
     }
   }
+
+  // Track clicked tiles stat
+  incrementStat('tilesActivated');
 }
 
 /**
@@ -164,12 +177,15 @@ function checkWin() {
 }
 
 /**
- * This method activates the reset option and colors Bingo green
+ * This method colors the reset button and Bingo text green
  */
 function onWin() {
   won = true;
-  document.getElementById('restartwrapper').classList.add('restartopen');
+  document.getElementById('restartbutton').classList.add('won');
   document.getElementById('bingo').classList.add('bingo');
+
+  // Track games won stat
+  incrementStat('gamesWon');
 }
 
 /**
@@ -218,4 +234,36 @@ function updateColorMode() {
 function applyColorMode() {
   const body = document.getElementsByTagName('body')[0];
   body.className = bronzeBingo.colorModes[bronzeBingo.colorMode].mode;
+}
+
+function incrementStat(stat, amount = 1) {
+  let statCount = localStorage.getItem(stat);
+  if(statCount){
+    localStorage.setItem(stat, Number(statCount)+amount);
+  }else{
+    localStorage.setItem(stat, amount);
+  }
+}
+
+function displayStats() {
+  const wins = Number(localStorage.getItem('gamesWon'));
+  const plays = Number(localStorage.getItem('gamesPlayed'));
+  const clicks = Number(localStorage.getItem('tilesActivated'));
+
+  incrementStat('timeOnPage', Date.now()-timestampArrived);
+  timestampArrived = Date.now();
+
+  let pagetime = Number(localStorage.getItem('timeOnPage'));
+	const hours = Math.floor(pagetime / 3600000);
+	pagetime -= hours * 3600000;
+	const minutes = Math.floor(pagetime / 60000);
+	pagetime -= minutes * 60000;
+	const seconds = Math.floor(pagetime / 1000);
+
+  const statText = `Games played: ${plays}
+Games won: ${wins}
+Tiles activated: ${clicks}
+Time spent on page: ${hours}h, ${minutes}m, ${seconds}s`;
+
+  alert(statText);
 }

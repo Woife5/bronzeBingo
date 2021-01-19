@@ -2,8 +2,8 @@
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version": "1.7.0",
-    "versionDate": "2020-07-23",
+    "version": "1.8.1",
+    "versionDate": "2021-01-19",
     "author": "Wolfgang Schwendtbauer",
     "enableJsBingo": function () {
         "Hello there!";
@@ -66,6 +66,7 @@ let bronzeBingo = {
             "data": [
                 "kys",
                 "Bronze",
+                "Iron",
                 "idiot",
                 "just a game",
                 "u mad?",
@@ -86,8 +87,8 @@ let bronzeBingo = {
         },
         // --- Mario Kart Bingo ---
         "mariokart": {
-            "name": "Mario Kart Bingo",
-            "description": "Bingo for Mario Kart singleplayer or multiplayer",
+            "name": "Mariokart Bingo",
+            "description": "Bingo for Mariokart singleplayer or multiplayer",
             "data": [
                 "Use a mushroom",
                 "Miss an itembox",

@@ -10,9 +10,7 @@
 
 <body class="light">
   <h1 id="bingo">Bronze Bingo</h1>
-  <div id="restartwrapper" class="restart">
-    <a class="link" class="closed" onClick="resetGame()">Click here to restart!</a>
-  </div>
+  <button id="restartbutton" class="resetbutton" type="reset" onclick="resetGame()">Reset Board</button>
   <table id="bronzebingo">
     <tr>
       <td id="00" onClick="onClick(0,0)"></td>
@@ -48,6 +46,7 @@
   <a class="link"
     href="https://docs.google.com/spreadsheets/d/1tJAOjXcsH9sbAg0HY5x-P0lhF35yVbA1TMkyFK1lArQ/edit?usp=sharing"
     target="_blank">Suggestions</a>
+  <a class="link" href="javascript:displayStats()">Stats</a>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
