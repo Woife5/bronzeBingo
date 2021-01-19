@@ -71,6 +71,11 @@
 @media screen and (orientation:portrait) {
     :root{
         --restart-text-size: 4vw;
-        --restart-text-padding: 6vw;
+        --restart-text-padding: 12vw;
     }
+}
+
+.won{
+    --tile-background: var(--tile-winning);
+    --tile-textcolor: var(--tile-winning-textcolor);
 }

@@ -61,8 +61,8 @@ function resetGame() {
   won = false;
   shuffle(phrases);
 
-  // Remove the restart text and green color from Bingo
-  document.getElementById('restartwrapper').classList.remove('restartopen');
+  // Remove the green color from Bingo and remove reset-button color
+  document.getElementById('restartbutton').classList.remove('won');
   document.getElementById('bingo').classList = '';
 
   // Remove the active and winning paint from each tile
@@ -115,7 +115,7 @@ function resetColorSelector() {
 }
 
 /**
- * This method taked an array and shuffles it.
+ * This method takes an array and shuffles it.
  * @param {Array} a The array to be shuffled
  */
 function shuffle(a) {
@@ -164,11 +164,11 @@ function checkWin() {
 }
 
 /**
- * This method activates the reset option and colors Bingo green
+ * This method colors the reset button and Bingo text green
  */
 function onWin() {
   won = true;
-  document.getElementById('restartwrapper').classList.add('restartopen');
+  document.getElementById('restartbutton').classList.add('won');
   document.getElementById('bingo').classList.add('bingo');
 }
 
