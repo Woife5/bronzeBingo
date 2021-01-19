@@ -2,7 +2,7 @@
  * This object contains all data and game modes for bronzeBingo
  */
 let bronzeBingo = {
-    "version": "1.8.0",
+    "version": "1.8.1",
     "versionDate": "2021-01-19",
     "author": "Wolfgang Schwendtbauer",
     "enableJsBingo": function () {

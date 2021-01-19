@@ -4,6 +4,13 @@ let grid = [[false]];
 let phrases = [''];
 let won = false;
 
+// Remember current timestamp to add to the time spent on page counter
+let timestampArrived = Date.now();
+
+window.onbeforeunload = function(){
+  incrementStat('timeOnPage', Date.now()-timestampArrived);
+};
+
 // Add change listener to the mode selector
 const modeselect = document.getElementById('modeselect');
 modeselect.addEventListener('change', resetGame);
@@ -48,7 +55,7 @@ function resetGame() {
   const curmode = modeselect.options[modeselect.selectedIndex].value;
 
   // Set name of currently set gamemode
-  document.getElementById('bingo').innerText = bronzeBingo.gameModes[curmode].name
+  document.getElementById('bingo').innerText = bronzeBingo.gameModes[curmode].name;
 
   // Store current gammode in localstorage
   let gamemode = Object.keys(bronzeBingo.gameModes).indexOf(curmode);
@@ -82,6 +89,9 @@ function resetGame() {
     [false, false, false, false],
     [false, false, false, false]
   ];
+
+  // Track games palyed counter
+  incrementStat('gamesPlayed');
 }
 
 /**
@@ -141,6 +151,9 @@ function onClick(row, col) {
       onWin();
     }
   }
+
+  // Track clicked tiles stat
+  incrementStat('tilesActivated');
 }
 
 /**
@@ -170,6 +183,9 @@ function onWin() {
   won = true;
   document.getElementById('restartbutton').classList.add('won');
   document.getElementById('bingo').classList.add('bingo');
+
+  // Track games won stat
+  incrementStat('gamesWon');
 }
 
 /**
@@ -218,4 +234,36 @@ function updateColorMode() {
 function applyColorMode() {
   const body = document.getElementsByTagName('body')[0];
   body.className = bronzeBingo.colorModes[bronzeBingo.colorMode].mode;
+}
+
+function incrementStat(stat, amount = 1) {
+  let statCount = localStorage.getItem(stat);
+  if(statCount){
+    localStorage.setItem(stat, Number(statCount)+amount);
+  }else{
+    localStorage.setItem(stat, amount);
+  }
+}
+
+function displayStats() {
+  const wins = Number(localStorage.getItem('gamesWon'));
+  const plays = Number(localStorage.getItem('gamesPlayed'));
+  const clicks = Number(localStorage.getItem('tilesActivated'));
+
+  incrementStat('timeOnPage', Date.now()-timestampArrived);
+  timestampArrived = Date.now();
+
+  let pagetime = Number(localStorage.getItem('timeOnPage'));
+	const hours = Math.floor(pagetime / 3600000);
+	pagetime -= hours * 3600000;
+	const minutes = Math.floor(pagetime / 60000);
+	pagetime -= minutes * 60000;
+	const seconds = Math.floor(pagetime / 1000);
+
+  const statText = `Games played: ${plays}
+Games won: ${wins}
+Tiles activated: ${clicks}
+Time spent on page: ${hours}h, ${minutes}m, ${seconds}s`;
+
+  alert(statText);
 }
