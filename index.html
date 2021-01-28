@@ -46,7 +46,23 @@
   <a class="link"
     href="https://docs.google.com/spreadsheets/d/1tJAOjXcsH9sbAg0HY5x-P0lhF35yVbA1TMkyFK1lArQ/edit?usp=sharing"
     target="_blank">Suggestions</a>
-  <a class="link" href="javascript:displayStats()">Stats</a>
+  <a class="link" id="statTrigger">Stats</a>
+
+  <!-- Stat modal, usually not visible -->
+  <div id="statModal" class="modal">
+
+    <!-- Stat modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="statTable">
+        <p class="leftAlign">Games played<br>Games won<br>Tiles activated<br>Time spent on page</p>
+
+        <p id="statWrapper" class="rightAlign"></p>
+      </div>
+    </div>
+
+  </div>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

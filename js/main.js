@@ -35,11 +35,47 @@ if (localStorage.getItem('colormode') && (Number(localStorage.getItem('colormode
   colorselect.options.selectedIndex = bronzeBingo.colorMode;
 }
 
+const statModal = document.getElementById("statModal");
+
+// Get the button that opens the modal
+const openStats = document.getElementById("statTrigger");
+
+// Get the <span> element that closes the modal
+document.getElementsByClassName("close")[0].onclick = function() {
+  closeStatModal();
+}
+
+let updateStatModalInterval;
+
+// When the user clicks the button, open the modal 
+openStats.onclick = function() {
+  displayStats();
+  statModal.style.display = "block";
+  updateStatModalInterval = window.setInterval(() => {
+    displayStats();
+  }, 100);
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == statModal) {
+    closeStatModal();
+  }
+}
+
 // Initialize game
 resetGame();
 
 // Show game version in the title
 document.getElementsByTagName('title')[0].textContent += ' ' + bronzeBingo.version;
+
+/**
+ * Closes the stat tracker modal
+ */
+function closeStatModal() {
+  statModal.style.display = "none";
+  clearInterval(updateStatModalInterval);
+}
 
 /**
  * Resets the entire game board
@@ -249,6 +285,7 @@ function displayStats() {
   const wins = Number(localStorage.getItem('gamesWon'));
   const plays = Number(localStorage.getItem('gamesPlayed'));
   const clicks = Number(localStorage.getItem('tilesActivated'));
+  const statWrapper = document.getElementById('statWrapper');
 
   incrementStat('timeOnPage', Date.now()-timestampArrived);
   timestampArrived = Date.now();
@@ -260,10 +297,5 @@ function displayStats() {
 	pagetime -= minutes * 60000;
 	const seconds = Math.floor(pagetime / 1000);
 
-  const statText = `Games played: ${plays}
-Games won: ${wins}
-Tiles activated: ${clicks}
-Time spent on page: ${hours}h, ${minutes}m, ${seconds}s`;
-
-  alert(statText);
+  statWrapper.innerHTML = `${plays}<br>${wins}<br>${clicks}<br>${hours}h, ${minutes}m, ${seconds}s`;
 }

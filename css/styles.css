@@ -1,9 +1,15 @@
 body{
-  user-select: none;
   text-align: center;
   transition: 0.3s;
   background: var(--background-color);
   color: var(--text-color);
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #bronzebingo{
@@ -106,6 +112,70 @@ h1{
   transform: translateY(4px);
 }
 
+/* Stat modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 25vh; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--background-color);
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--background-color);
+  margin: auto;
+  padding: 20px;
+  border: 3px solid var(--border-color);
+  border-radius: 15px;
+  width: 40%;
+  max-width: 500px;
+  font-family: 'Roboto', sans-serif;
+  height: 14vh;
+}
+
+#statTable {
+  font-size: 2vh;
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  margin: 0 30px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.leftAlign {
+  float: left;
+  text-align: left;
+}
+
+.rightAlign {
+  float: right;
+  text-align: right;
+}
+
 @media screen and (orientation:portrait) {
   body{
     margin: 0px;
@@ -150,5 +220,25 @@ h1{
   .resetbutton{
     font-size: 3em;
     margin: 1.5em;
+  }
+
+  .modal {
+    padding-top: 25vh;
+  }
+  
+  .modal-content {
+    margin: auto;
+    padding: 20px;
+    border: 3px solid var(--border-color);
+    border-radius: 15px;
+    width: 80%;
+  }
+  
+  #statTable {
+    font-size: 4.5vw;
+  }
+
+  #statTable span {
+    font-size: 2rem;
   }
 }
